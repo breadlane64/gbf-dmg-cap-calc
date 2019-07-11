@@ -1,0 +1,17 @@
+// Import bootstrap with theme.
+@import './themes/bootswatch_cyborg_custom/variables';
+@import '~bootstrap/scss/bootstrap.scss';
+@import './themes/bootswatch_cyborg_custom/bootswatch';
+
+// Import our styles.
+@import './App';
+
+// TODO: delete this?
+body {
+  /* Use same font families as motocal ( https://medon-lab.com/keisanki/ ) */
+  //font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Meiryo UI", メイリオ, Meiryo, Verdana, "ＭＳ Ｐゴシック", sans-serif;
+
+  /* These are left over from create-react-app. */
+  //-webkit-font-smoothing: antialiased;
+  //-moz-osx-font-smoothing: grayscale;
+}
