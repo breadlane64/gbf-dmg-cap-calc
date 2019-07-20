@@ -1,11 +1,20 @@
-import ChargeAttack5StarEternalCapTiers from './data/caps/ChargeAttack5StarEternalCapTiers'
-import ChargeAttackDefaultCapTiers from './data/caps/ChargeAttackDefaultCapTiers'
-import SingleAttackCapTiers from './data/caps/SingleAttackCapTiers'
-import EnemyElement from './data/general/EnemyElement'
-import ArcarumSummonSubAura from './data/mods/ArcarumSummonSubAura'
-import Assassin from './data/mods/Assassin'
-import EnemyOffElementReduction from './data/mods/EnemyOffElementReduction'
-import Seraphic from './data/mods/Seraphic'
+import { customKey } from './data/DataUtils'
+import ChargeCapTiers from './data/caps/ChargeCapTiers'
+import DmgCapTiers from './data/caps/DmgCapTiers'
+import SingleCapTiers from './data/caps/SingleCapTiers'
+import CharacterAssassin from './data/character_buffs/Assassin'
+import CharacterSeraphicSupportSkill from './data/character/SeraphicSupportSkill'
+import FoeElement from './data/foe/Element'
+import FoeOffElementReduction from './data/foe/OffElementReduction'
+import PartyAssassin from './data/party_buffs/Assassin'
+import ArcarumSummonSubAura from './data/summons/ArcarumSubAura'
+import PrimarchSummonSubAura from './data/summons/PrimarchSubAura'
+import SummonTypes from './data/summons/Types'
+import Seraphic from './data/weapons/Seraphic'
+import WeaponTypes from './data/weapons/Types'
+
+const MC_ID = 1; // The MC always has this id.
+const MC_NAME = "MC";
 
 // Contains all data related to GBF.
 // The data is actually defined in the modules in the data subfolder.
@@ -15,6 +24,16 @@ class GbfData {
     this.super();
   }
 
+  static get MC_ID() {
+    return MC_ID;
+  }
+
+  static get MC_NAME() {
+    return MC_NAME;
+  }
+
+  // Static class functions
+
   // Returns an object containing a set of calculation parameters
   // with default values.
   //
@@ -22,108 +41,158 @@ class GbfData {
   // data structure looks like.
   static get defaultCalcParams() {
     return {
-      enemyElement: EnemyElement.WEAK,
-      enemyOffElementReduction: EnemyOffElementReduction.NONE,
-      isMc: true,
+      party: {
+        foeElement: FoeElement.WEAK,
+        foeOffElementReduction: FoeOffElementReduction.NONE,
+        seraphicWeapon: {
+          enabled: true,
+          data: Seraphic.SSR,
+          customData: {...Seraphic[customKey]},
+        },
+        otherWeapons: [
+          {
+            enabled: true,
+            data: {...WeaponTypes.ULTIMA_GAUPH_KEY_GAMMA},
+          },
+        ],
+        arcarumSummonSubAura: {
+          enabled: true,
+          data: ArcarumSummonSubAura.NONE,
+          customData: {...ArcarumSummonSubAura[customKey]},
+        },
+        primarchSummonSubAura: {
+          enabled: true,
+          data: PrimarchSummonSubAura.NONE,
+          customData: {...PrimarchSummonSubAura[customKey]},
+        },
+        otherSummons: [
+          {
+            enabled: true,
+            data: {...SummonTypes.OMEGA},
+          },
+        ],
+        assassinBuff: {
+          enabled: true,
+          data: PartyAssassin.NONE,
+          customData: {...PartyAssassin[customKey]},
+        },
+        dmgBoostedBuff: 0,
+        otherBuffs: [
+          // TODO: add Rage IV?
+        ],
+      }, // party
 
-      character: {
-        mc: {
-          hasMasteredMechanic: false, // Applies only if character is MC.
-          emps: {
-            dmgCapUp: 0, // Applies only if character is MC.
-            chainCapUp: 0, // Always applies. (verification needed) TODO: move to general mods
-          },
+      mc: {
+        id: MC_ID,
+        name: MC_NAME,
+        dmgCapTiers: DmgCapTiers.DEFAULT,
+        customDmgCapTiers: {
+          ...DmgCapTiers[customKey],
+          singleCapTiers: {...SingleCapTiers[customKey]},
+          chargeCapTiers: {...ChargeCapTiers[customKey]},
         },
-        notMc: {
-          is5StarEternal: false, // Applies only if character is not MC.
-          supportSkill: null, // Applies only if character is not MC.
-          eternal5Star: {
-            isLv95: false, // Applies only if character is 5* eternal.
-          },
-          emps: {
-            chargeCapUp: 0, // Applies only if character is not MC.
-          },
+        dmgCapUpBonuses: 1,
+        dmgCapUpEmps: 15,
+        chainDmgCapUpEmps: 5,
+        assassinBuff: {
+          enabled: true,
+          data: CharacterAssassin.NONE,
+          customData: {...CharacterAssassin[customKey]},
         },
+        dmgBoostedBuff: 0,
+        otherBuffs: [],
       },
 
-      mods: {
-        finalDmg: {
-          seraphic: Seraphic.NONE,
-          arcarumSummonSubAura: ArcarumSummonSubAura.NONE,
-          others: [],
+      characters: [
+        // Add Katalina as a default character.
+        {
+          id: MC_ID + 1,
+          name: "Katalina",
+          dmgCapTiers: DmgCapTiers.DEFAULT,
+          customDmgCapTiers: {
+            ...DmgCapTiers[customKey],
+            singleCapTiers: {...SingleCapTiers[customKey]},
+            chargeCapTiers: {...ChargeCapTiers[customKey]},
+          },
+          chargeCapUpEmps: 0,
+          seraphicSupportSkill: {
+            enabled: true,
+            data: CharacterSeraphicSupportSkill.NONE,
+            customData: {...CharacterSeraphicSupportSkill[customKey]},
+          },
+          assassinBuff: {
+            enabled: true,
+            data: CharacterAssassin.NONE,
+            customData: {...CharacterAssassin[customKey]},
+          },
+          dmgBoostedBuff: 0,
+          otherBuffs: [],
         },
-        assassin: Assassin.NONE,
-        supplementalDmg: [],
-      },
+      ],
     };
   }
 
-  // TEMP: used for testing purposes only.
-  static get testingCalcParams() {
-    let params = GbfData.defaultCalcParams;
-    /*
-    GbfData.custom.assassin = {
-      key: Assassin.CUSTOM.key,
-      name: "Custom",
-      description: "test assassin",
-      singleCapUp: 45,
-      chargeCapUp: 55,
-    };
-    params.mods.assassin = GbfData.custom.assassin;
-    */
-
-    return params;
-  }
-
-  // Creates and returns a new object containing a calculation results
-  // data structure, populated with placeholder values.
   static newCalcResults() {
     return {
-      totalCapMods: {
-        singleAttack: 0,
-        chargeAttack: 0,
-        chainBurst: 0,
-      },
+      singleCaps: [],
+      chargeCaps: [],
+      chainCaps: [],
+    }
+  }
 
-      softCaps: {
-        singleAttack: {
-          softCap: 0,
-          rawDmg: 0, // Raw damage to reach the soft cap.
+  // TEMP
+  // TODO: document this in comment somewhere.
+  static sampleCalcResults() {
+    return {
+      singleCaps: [
+        {
+          id: MC_ID,
+          name: MC_NAME,
+          totalCapMod: 100, // 100 means caps are unchanged.
+          softDmgCap: 0,
+          rawDmg: 0, // Raw damage to reach the soft damage cap.
+          capTiersArray: SingleCapTiers.DEFAULT.tiers,
         },
-        chargeAttack: {
-          softCap: 0,
-          rawDmg: 0, // Raw damage to reach the soft cap.
+      ],
+      chargeCaps: [
+        {
+          id: MC_ID,
+          name: MC_NAME,
+          totalCapMod: 100, // 100 means caps are unchanged.
+          softDmgCap: 0,
+          rawDmg: 0, // Raw damage to reach the soft damage cap.
+          capTiersArray: ChargeCapTiers.DEFAULT.tiers,
         },
-        chainBurst2c: { // 2 chain burst.
-          softCap: 0,
-          rawDmg: 0, // Raw damage to reach the soft cap.
+      ],
+      chainCaps: [
+        {
+          chainNumber: 2,
+          totalCapMod: 100, // 100 means caps are unchanged.
+          softDmgCap: 0,
+          rawDmg: 0, // Raw damage to reach the soft damage cap.
           totalChargeDmg: 0, // Total CA damage needed to reach the soft cap.
-          avgChargeDmg: 0, // Average CA damage needed to reach the soft cap.
         },
-        chainBurst3c: { // 3 chain burst.
-          softCap: 0,
-          rawDmg: 0, // Raw damage to reach the soft cap.
+        {
+          chainNumber: 3,
+          totalCapMod: 100, // 100 means caps are unchanged.
+          softDmgCap: 0,
+          rawDmg: 0, // Raw damage to reach the soft damage cap.
           totalChargeDmg: 0, // Total CA damage needed to reach the soft cap.
-          avgChargeDmg: 0, // Average CA damage needed to reach the soft cap.
         },
-        chainBurst4c: { // 4 chain burst.
-          softCap: 0,
-          rawDmg: 0, // Raw damage to reach the soft cap.
+        {
+          chainNumber: 4,
+          totalCapMod: 100, // 100 means caps are unchanged.
+          softDmgCap: 0,
+          rawDmg: 0, // Raw damage to reach the soft damage cap.
           totalChargeDmg: 0, // Total CA damage needed to reach the soft cap.
-          avgChargeDmg: 0, // Average CA damage needed to reach the soft cap.
         },
-      },
+      ],
     };
   }
-}
 
-// Publicly-accessible, user-customizable data.
-// Note that the {...object} syntax clones the original object.
-GbfData.custom = {
-  arcarumSummonSubAura: {...ArcarumSummonSubAura.CUSTOM},
-  assassin: {...Assassin.CUSTOM},
-  enemyOffElementReduction: {...EnemyOffElementReduction.CUSTOM},
-  seraphic: {...Seraphic.CUSTOM},
-};
+  // Static class constants
+
+  static get MECHANIC_MASTERY_BONUS_DMG_CAP_UP() { return 1; }
+}
 
 export default GbfData;

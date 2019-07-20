@@ -17,6 +17,14 @@ button.no-btn-outline {
   }
 }
 
+// Remove the outline from a toggle button when it gains focus or is active.
+label.no-btn-outline {
+  &.focus, &.active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
 // Remove spinner / spin buttons from inside number input fields
 // when the screen is xs size.
 input.no-spinner-xs {
@@ -33,10 +41,12 @@ input.no-spinner-sm {
   }
 }
 
-// Underline text that has a tooltip.
+// Element with a tooltip.
 .has-tooltip {
-  border-bottom: dotted 1px $text-muted;
   cursor: help;
+  &.has-tooltip-decorated {
+    border-bottom: dotted 1px $text-muted;
+  }
 }
 
 // Override general styles with component styles.

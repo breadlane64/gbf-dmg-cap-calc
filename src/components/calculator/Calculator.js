@@ -2,10 +2,11 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap'
 import GbfData from 'gbf/GbfData';
 import GbfMath from 'gbf/GbfMath';
-import ModsSection from "./mods/ModsSection";
-import CapsSection from "./caps/CapsSection";
-import CalcModsContext from "./CalcModsContext";
 import CalcCapsContext from "./CalcCapsContext";
+import CalcPartyContext from "./CalcPartyContext";
+import CapsSection from "./caps/CapsSection";
+import CharacterSelect from "./party/CharacterSelect";
+import PartySection from "./party/PartySection";
 
 // The calculator view.
 class Calculator extends React.Component {
@@ -13,11 +14,13 @@ class Calculator extends React.Component {
     super(props);
 
     this.state = {
-      calcParams: GbfData.testingCalcParams,
+      calcParams: GbfData.defaultCalcParams,
+      curCharacterId: CharacterSelect.ALL_CHARACTERS_ID,
     };
 
     // Allow 'this' to work correctly when handling these callbacks.
     this.setAllCalcParams = this.setAllCalcParams.bind(this);
+    this.setCurCharacterId = this.setCurCharacterId.bind(this);
   }
 
   // Replaces all of the previous calculator params with the given params.
@@ -25,13 +28,21 @@ class Calculator extends React.Component {
   // the given object must contain all of the existing, unchanged params
   // in addition to any changed params.
   setAllCalcParams(newCalcParams) {
-    this.setState({ calcParams: newCalcParams })
+    this.setState({ calcParams: newCalcParams });
+  }
+
+  // Sets the id of the character currently being edited,
+  // or the special id for the All Characters form.
+  setCurCharacterId(id) {
+    this.setState({ curCharacterId: id });
   }
 
   render() {
-    let calcModsContext = {
+    let calcPartyContext = {
       calcParams: this.state.calcParams,
+      curCharacterId: this.state.curCharacterId,
       setAllCalcParams: this.setAllCalcParams,
+      setCurCharacterId: this.setCurCharacterId,
     };
     let calcCapsContext = {
       calcResults: GbfMath.calculateResults(this.state.calcParams),
@@ -40,12 +51,12 @@ class Calculator extends React.Component {
     return (
       <Container fluid id="calculator">
         <Row>
-          <Col className="calc-column">
-            <CalcModsContext.Provider value={calcModsContext}>
-              <ModsSection />
-            </CalcModsContext.Provider>
+          <Col className="calc-column" sm={6}>
+            <CalcPartyContext.Provider value={calcPartyContext}>
+              <PartySection />
+            </CalcPartyContext.Provider>
           </Col>
-          <Col className="calc-column">
+          <Col className="calc-column" sm={6}>
             <CalcCapsContext.Provider value={calcCapsContext}>
               <CapsSection />
             </CalcCapsContext.Provider>
