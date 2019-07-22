@@ -9,6 +9,10 @@ class Instructions extends React.Component {
         <p>
           Instructions go here.
         </p>
+        <p>
+          <span>Source code can be found at </span>
+          <a href="https://github.com/breadlane64/gbf-dmg-cap-calc" target="_blank">https://github.com/breadlane64/gbf-dmg-cap-calc</a>
+        </p>
       </Container>
     );
   }

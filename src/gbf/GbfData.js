@@ -139,14 +139,6 @@ class GbfData {
     };
   }
 
-  static newCalcResults() {
-    return {
-      singleCaps: [],
-      chargeCaps: [],
-      chainCaps: [],
-    }
-  }
-
   // TEMP
   // TODO: document this in comment somewhere.
   static sampleCalcResults() {
@@ -200,10 +192,6 @@ class GbfData {
       ],
     };
   }
-
-  // Static class constants
-
-  static get MECHANIC_MASTERY_BONUS_DMG_CAP_UP() { return 1; }
 }
 
 export default GbfData;

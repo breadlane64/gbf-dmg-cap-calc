@@ -28,13 +28,18 @@ class GbfMath {
   // Creates and returns a new object containing calculation results based on
   // the given calculation params.
   //
-  // See GbfData.newCalcResults to see what the returned
+  // See GbfData.sampleCalcResults to see what the returned
   // data structure looks like.
   static calculateResults(params) {
     let party = params.party;
     let results = {
       singleCaps: [],
       chargeCaps: [],
+      chainBurst: {
+        totalCapMod: 100, // 100 means caps are unchanged.
+        totalDmgBoost: 0, // 0 means damage and cap are unchanged.
+        totalDmgMod: 100, // 100 means damage is unchanged.
+      },
       chainCaps: [],
     };
     let totalCapMod = 0;
