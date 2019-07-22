@@ -12,7 +12,7 @@ const data = Object.freeze([
   {
     key: "BEAST_WEAPON_MALUS_SL15",
     typeKey: "DMG_CAP_UP",
-    name: "Beast Weapon Malus, SL15", // Default value.
+    description: "Beast Weapon Malus, SL15", // Default value.
     value: 7, // Default value.
   },
 
@@ -20,7 +20,7 @@ const data = Object.freeze([
   {
     key: "HOLLOWSKY_WEAPON_EXCEPT_AXE_LV120",
     typeKey: "DMG_BOOSTED",
-    name: "Hollowsky Weapon (except Axe), lv120", // Default value.
+    description: "Hollowsky Weapon (except Axe), lv120", // Default value.
     value: 30000, // Default value.
   },
 
@@ -28,7 +28,7 @@ const data = Object.freeze([
   {
     key: "ABYSS_SPINE_LV120_SL15",
     typeKey: "OMEGA_SENTENCE",
-    name: "Abyss Spine, lv120, SL15", // Default value.
+    description: "Abyss Spine, lv120, SL15", // Default value.
     value: 9.5, // Default value.
   },
 
@@ -36,7 +36,7 @@ const data = Object.freeze([
   {
     key: "BLUE_SPHERE_LV150_SL15",
     typeKey: "NORMAL_SENTENCE",
-    name: "Blue Sphere, lv150, SL15", // Default value.
+    description: "Blue Sphere, lv150, SL15", // Default value.
     value: 5, // Default value.
   },
 
@@ -44,7 +44,7 @@ const data = Object.freeze([
   {
     key: "CERTIFICUS_LV150_SL15",
     typeKey: "NORMAL_SENTENCE",
-    name: "Certificus, lv150, SL15", // Default value.
+    description: "Certificus, lv150, SL15", // Default value.
     value: 5, // Default value.
   },
 
@@ -52,7 +52,7 @@ const data = Object.freeze([
   {
     key: "PURIFYING_THUNDERBOLT_SL15",
     typeKey: "NORMAL_SENTENCE",
-    name: "Purifying Thunderbolt, SL15", // Default value.
+    description: "Purifying Thunderbolt, SL15", // Default value.
     value: 6.8, // Default value.
   },
 
@@ -60,7 +60,7 @@ const data = Object.freeze([
   {
     key: "SUMMERS_MIRAGE_LV120_SL15",
     typeKey: "OMEGA_SENTENCE",
-    name: "Summer's Mirage, lv120, SL15", // Default value.
+    description: "Summer's Mirage, lv120, SL15", // Default value.
     value: 9.5, // Default value.
   },
 
@@ -68,7 +68,7 @@ const data = Object.freeze([
   {
     key: "TYROS_SCEPTER_SL15",
     typeKey: "EXCELSIOR",
-    name: "Tyros Scepter, SL15", // Default value.
+    description: "Tyros Scepter, SL15", // Default value.
     value: 15, // Default value.
   },
 
@@ -76,7 +76,7 @@ const data = Object.freeze([
   {
     key: "TYROS_ZITHER_LV120_SL15",
     typeKey: "OMEGA_SENTENCE",
-    name: "Tyros Zither, lv120, SL15", // Default value.
+    description: "Tyros Zither, lv120, SL15", // Default value.
     value: 9.5, // Default value.
   },
 
@@ -84,7 +84,7 @@ const data = Object.freeze([
   {
     key: "UNHEIL_LV120_SL15",
     typeKey: "NORMAL_GLORY",
-    name: "Unheil, lv120, SL15", // Default value.
+    description: "Unheil, lv120, SL15", // Default value.
     value: 6.8, // Default value.
   },
 
@@ -92,7 +92,7 @@ const data = Object.freeze([
   {
     key: "WINDHOSE_LV120_SL15",
     typeKey: "CHAIN_CAP_UP",
-    name: "Windhose, lv120, SL15", // Default value.
+    description: "Windhose, lv120, SL15", // Default value.
     value: 30, // Default value.
   },
 ]);

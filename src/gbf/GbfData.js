@@ -52,7 +52,10 @@ class GbfData {
         otherWeapons: [
           {
             enabled: true,
-            data: {...WeaponTypes.ULTIMA_GAUPH_KEY_GAMMA},
+            data: {
+              key: WeaponTypes.ULTIMA_GAUPH_KEY_GAMMA.key,
+              value: WeaponTypes.ULTIMA_GAUPH_KEY_GAMMA.value,
+            },
           },
         ],
         arcarumSummonSubAura: {
@@ -68,7 +71,11 @@ class GbfData {
         otherSummons: [
           {
             enabled: true,
-            data: {...SummonTypes.OMEGA},
+            data: {
+              key: SummonTypes.OMEGA.key,
+              description: SummonTypes.OMEGA.name,
+              value: SummonTypes.OMEGA.value,
+            },
           },
         ],
         assassinBuff: {
@@ -149,6 +156,7 @@ class GbfData {
           id: MC_ID,
           name: MC_NAME,
           totalCapMod: 100, // 100 means caps are unchanged.
+          totalDmgBoost: 0, // 0 means cap is unchanged.
           softDmgCap: 0,
           rawDmg: 0, // Raw damage to reach the soft damage cap.
           capTiersArray: SingleCapTiers.DEFAULT.tiers,
@@ -159,29 +167,32 @@ class GbfData {
           id: MC_ID,
           name: MC_NAME,
           totalCapMod: 100, // 100 means caps are unchanged.
+          totalDmgBoost: 0, // 0 means cap is unchanged.
           softDmgCap: 0,
           rawDmg: 0, // Raw damage to reach the soft damage cap.
           capTiersArray: ChargeCapTiers.DEFAULT.tiers,
         },
       ],
+      chainBurst: {
+        totalCapMod: 100, // 100 means caps are unchanged.
+        totalDmgBoost: 0, // 0 means damage and cap are unchanged.
+        totalDmgMod: 100, // 100 means damage is unchanged.
+      },
       chainCaps: [
         {
           chainNumber: 2,
-          totalCapMod: 100, // 100 means caps are unchanged.
           softDmgCap: 0,
           rawDmg: 0, // Raw damage to reach the soft damage cap.
           totalChargeDmg: 0, // Total CA damage needed to reach the soft cap.
         },
         {
           chainNumber: 3,
-          totalCapMod: 100, // 100 means caps are unchanged.
           softDmgCap: 0,
           rawDmg: 0, // Raw damage to reach the soft damage cap.
           totalChargeDmg: 0, // Total CA damage needed to reach the soft cap.
         },
         {
           chainNumber: 4,
-          totalCapMod: 100, // 100 means caps are unchanged.
           softDmgCap: 0,
           rawDmg: 0, // Raw damage to reach the soft damage cap.
           totalChargeDmg: 0, // Total CA damage needed to reach the soft cap.

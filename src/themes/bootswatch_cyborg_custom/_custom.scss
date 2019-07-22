@@ -1,0 +1,22 @@
+// Show pointer cursor over checkbox button.
+label.btn {
+  cursor: pointer;
+}
+
+// Improve appearance of checkboxes.
+.btn-outline-secondary {
+  border-color: $gray-400;
+  color: $gray-400;
+}
+
+// Use less vertical padding on small buttons.
+.btn-sm, .btn-group-sm > .btn {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+// Shrink label margin so it has the same vertical height
+// as small buttons.
+label.form-label {
+  margin-bottom: 0.25rem;
+}

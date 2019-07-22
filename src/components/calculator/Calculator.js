@@ -47,6 +47,7 @@ class Calculator extends React.Component {
     let calcCapsContext = {
       calcResults: GbfMath.calculateResults(this.state.calcParams),
     };
+    console.log(this.state.calcParams); // TEMP
 
     return (
       <Container fluid id="calculator">

@@ -48,11 +48,6 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Roboto:400,700" !defaul
   }
 }
 
-.btn-outline-secondary {
-  border-color: $gray-400;
-  color: $gray-400;
-}
-
 // Typography ==================================================================
 
 // Tables ======================================================================
@@ -297,3 +292,7 @@ legend {
     border-bottom: none;
   }
 }
+
+// Custom ==================================================================
+
+@import "./custom"
