@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Collapse, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CUSTOM_KEY } from 'gbf/data/DataUtils'
+import { parseNumericInput } from 'components/Utils'
 import CheckboxBtn from 'components/common/CheckboxBtn';
 import SelectOptions from 'components/common/SelectOptions';
 import WithTooltip from 'components/common/WithTooltip'
@@ -58,26 +59,25 @@ class SeraphicWeapon extends React.Component {
   handleValueChange(event) {
     let calcParams = this.context.calcParams;
     let seraphicWeapon = calcParams.party.seraphicWeapon;
-    let value = parseFloat(event.target.value);
-    if (!isFinite(value)) {
-      // Forbid non-number values.
-      return;
+    let oldValue = seraphicWeapon.dataRef.value;
+    let value = parseNumericInput(event.target.value, oldValue);
+    if (value !== oldValue) {
+      if (seraphicWeapon.dataRef.key !== CUSTOM_KEY) {
+        // Automatically change to custom when any param is changed.
+        // We need to make a copy of the original, immutable data.
+        seraphicWeapon.customData = {
+          ...seraphicWeapon.dataRef,
+          key: CUSTOM_KEY,
+          description: seraphicWeapon.dataRef.name,
+        };
+        seraphicWeapon.dataRef = seraphicWeapon.customData;
+      }
+      seraphicWeapon.customData.value = value;
+      if (this.context.autoEnableOnChange) {
+        seraphicWeapon.enabled = true;
+      }
+      this.context.setAllCalcParams(calcParams);
     }
-    if (seraphicWeapon.dataRef.key !== CUSTOM_KEY) {
-      // Automatically change to custom when any param is changed.
-      // We need to make a copy of the original, immutable data.
-      seraphicWeapon.customData = {
-        ...seraphicWeapon.dataRef,
-        key: CUSTOM_KEY,
-        description: seraphicWeapon.dataRef.name,
-      };
-      seraphicWeapon.dataRef = seraphicWeapon.customData;
-    }
-    seraphicWeapon.customData.value = value;
-    if (this.context.autoEnableOnChange) {
-      seraphicWeapon.enabled = true;
-    }
-    this.context.setAllCalcParams(calcParams);
   }
 
   render() {
@@ -98,12 +98,12 @@ class SeraphicWeapon extends React.Component {
       <div>
         <Form.Group>
           <Form.Row>
-            <Col xs={6}>
+            <Col sm={6}>
               <CheckboxBtn
                 btnClassName="btn-sm btn-outline-secondary"
                 btnVariant="outline-secondary"
                 checked={seraphicWeapon.enabled}
-                iconClassName="mr-0 mr-md-1"
+                iconClassName="mr-1"
                 onChange={this.handleEnabledChange}
               >
                 <WithTooltip
@@ -122,7 +122,7 @@ class SeraphicWeapon extends React.Component {
                 <SelectOptions hashmap={SeraphicWeapons} />
               </Form.Control>
             </Col>
-            <Col xs={6}>
+            <Col sm={6}>
               <Form.Label>
                 <WithTooltip tooltip="Single and charge attack DMG multiplier, if foe is weak to your element.">
                   ✞ DMG multiplier

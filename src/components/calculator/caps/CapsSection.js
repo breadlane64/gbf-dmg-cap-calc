@@ -28,7 +28,7 @@ class CapsSection extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="h4 text-primary text-center">Soft DMG Caps</h1>
+        <h1 className="calc-section-header h4 text-primary text-center">Soft DMG Caps</h1>
         <CollapsibleDiv
           collapsibleId="single-caps"
           text="Single attack"

@@ -3,9 +3,32 @@
 #calculator {
   @include caps;
 
-  // Allow each column to scroll independently.
+  // Allow each column to scroll independently, both vertically and
+  // horizontally.
+  // Also force the columns' backgrounds to cover the full height
+  // of the screen.
   .calc-column {
-    max-height: calc(100vh - 42px); // Height of top tab menu is 42px.
+    height: calc(100vh - 42px); // Height of top tab menu is 42px.
     overflow: auto;
+  }
+
+  .caps-column {
+    background-color: darken($body-bg, 5%);
+  }
+
+  // Make the headers smaller on smaller screens so they fit on one line.
+  .calc-section-header {
+    @include media-breakpoint-down(sm) {
+      font-size: 1.5rem;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 1.1rem;
+    }
+  }
+
+  @include media-breakpoint-down(xs) {
+    .inner-calc-column {
+      min-width: 150px;
+    }
   }
 }

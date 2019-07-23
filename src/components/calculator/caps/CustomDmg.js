@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Form } from 'react-bootstrap';
+import { parseNumericInput } from 'components/Utils'
 import WithTooltip from 'components/common/WithTooltip'
 import GbfMath from 'gbf/GbfMath'
 
@@ -32,15 +33,14 @@ class CustomDmg extends React.Component {
   }
 
   handleCustomRawDmgChange(event) {
-    let value = parseFloat(event.target.value);
-    if (!isFinite(value)) {
-      // Ignore strings that are not finite numbers.
-      return;
+    let oldValue = this.state.customRawDmg;
+    let value = parseNumericInput(event.target.value, oldValue);
+    if (value !== oldValue) {
+      this.setState({
+        customRawDmg: value,
+        wasRawDmgChangedLast: true,
+      });
     }
-    this.setState({
-      customRawDmg: value,
-      wasRawDmgChangedLast: true,
-    });
   }
 
   render() {
@@ -63,7 +63,7 @@ class CustomDmg extends React.Component {
     return (
       <Form className={this.props.className} id={formId}>
         <Form.Row>
-          <Col xs={6}>
+          <Col sm={6}>
             <Form.Label>
               <WithTooltip tooltip="Enter raw DMG here to calculate the resulting capped DMG.">
                 Raw DMG
@@ -76,7 +76,7 @@ class CustomDmg extends React.Component {
               value={customRawDmg}
             />
           </Col>
-          <Col xs={6}>
+          <Col sm={6}>
             <Form.Label>
               <WithTooltip tooltip="Enter capped DMG here to calculate the raw DMG needed to reach it.">
                 Capped DMG

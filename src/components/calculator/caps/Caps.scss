@@ -1,5 +1,22 @@
 @mixin caps {
+  // Since the icons used by the custom damage button have
+  // slightly different widths, make the button's width constant
+  // to prevent text from shifting left/right when the button is clicked.
+  .custom-dmg-btn {
+    text-align: center;
+    width: 1.9rem; // 30.4 pixels at default font size (16px).
+  }
+
   .minor-info {
     color: $gray-400;
+  }
+
+  .soft-cap {
+    color: $headings-color;
+    font-size: 1.5rem;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 1.1rem;
+    }
   }
 }

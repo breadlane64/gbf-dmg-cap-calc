@@ -53,15 +53,19 @@ class Calculator extends React.Component {
     return (
       <Container fluid id="calculator">
         <Row>
-          <Col className="calc-column" sm={6}>
-            <CalcPartyContext.Provider value={calcPartyContext}>
-              <PartySection />
-            </CalcPartyContext.Provider>
+          <Col className="calc-column" xs={6}>
+            <div className="inner-calc-column">
+              <CalcPartyContext.Provider value={calcPartyContext}>
+                <PartySection />
+              </CalcPartyContext.Provider>
+            </div>
           </Col>
-          <Col className="calc-column" sm={6}>
-            <CalcCapsContext.Provider value={calcCapsContext}>
-              <CapsSection />
-            </CalcCapsContext.Provider>
+          <Col className="calc-column caps-column" xs={6}>
+            <div className="inner-calc-column">
+              <CalcCapsContext.Provider value={calcCapsContext}>
+                <CapsSection />
+              </CalcCapsContext.Provider>
+            </div>
           </Col>
         </Row>
       </Container>

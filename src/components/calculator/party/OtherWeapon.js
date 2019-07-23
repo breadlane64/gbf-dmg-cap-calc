@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Collapse, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { parseNumericInput } from 'components/Utils'
 import SelectOptions from 'components/common/SelectOptions';
 import WithTooltip from 'components/common/WithTooltip'
 import WeaponTypes from 'gbf/data/weapons/Types'
@@ -43,8 +44,9 @@ class OtherWeapon extends React.Component {
   handleValueChange(event) {
     let calcParams = this.context.calcParams;
     let weapon = calcParams.party.otherWeapons[this.props.index];
-    let value = parseFloat(event.target.value);
-    if (isFinite(value)) {
+    let oldValue = weapon.data.value;
+    let value = parseNumericInput(event.target.value, oldValue);
+    if (value !== oldValue) {
       weapon.data.value = value;
       if (this.context.autoEnableOnChange) {
         weapon.enabled = true;
@@ -73,7 +75,7 @@ class OtherWeapon extends React.Component {
       <div>
         <Form.Group>
           <Form.Row>
-            <Col xs={6}>
+            <Col sm={6}>
               <PartyModBtns
                 index={index}
                 partyArrayName="otherWeapons"
@@ -86,7 +88,7 @@ class OtherWeapon extends React.Component {
                 <SelectOptions hashmap={WeaponTypes} />
               </Form.Control>
             </Col>
-            <Col xs={6}>
+            <Col sm={6}>
               <Form.Label>
                 <WithTooltip tooltip={weaponType.valueTooltip}>
                   {weaponType.valueLabel}

@@ -24,10 +24,10 @@ class DmgCap extends React.Component {
     }
     return (
       <Form.Row className="minor-info">
-        <Col className="text-right" xs={6}>
+        <Col className="text-sm-right" sm={6}>
           DMG boosted by
         </Col>
-        <Col xs={6}>
+        <Col className="text-right text-sm-left" sm={6}>
           {dmgCap.totalDmgBoost.toLocaleString()}
         </Col>
       </Form.Row>
@@ -58,18 +58,18 @@ class DmgCap extends React.Component {
     return (
       <div className={className}>
         <Form.Row>
-          <Col className="h5 mb-0 text-right" xs={6}>
+          <Col className="soft-cap mb-0 text-sm-right" sm={6}>
             {dmgCap.name}
           </Col>
-          <Col className="d-flex" xs={6}>
-            <div className="h5 mb-0 flex-fill soft-dmg-cap">
+          <Col className="d-flex text-right text-sm-left" sm={6}>
+            <div className="soft-cap mb-0 flex-fill soft-dmg-cap">
               {dmgCap.softDmgCap.toLocaleString()}
             </div>
-            <div>
+            <div className="ml-1">
               <WithTooltip tooltip={toggleEditTooltip}>
                 <Button
                   block
-                  className={"btn-sm no-btn-outline"}
+                  className={"custom-dmg-btn btn-sm no-btn-outline"}
                   onClick={() => this.setState({ isCustomOpen: !this.state.isCustomOpen })}
                   variant="info"
                   aria-controls={customFormId}
@@ -82,19 +82,19 @@ class DmgCap extends React.Component {
           </Col>
         </Form.Row>
         <Form.Row className="minor-info">
-          <Col className="text-right" xs={6}>
+          <Col className="text-sm-right" sm={6}>
             Total cap up
           </Col>
-          <Col xs={6}>
+          <Col className="text-right text-sm-left" sm={6}>
             {totalCapUp}%
           </Col>
         </Form.Row>
         {this.renderDmgBoost(dmgCap)}
         <Form.Row className="minor-info">
-          <Col className="text-right" xs={6}>
+          <Col className="text-sm-right" sm={6}>
             Raw DMG to reach cap
           </Col>
-          <Col xs={6}>
+          <Col className="text-right text-sm-left" sm={6}>
             {dmgCap.rawDmg.toLocaleString()}
           </Col>
         </Form.Row>

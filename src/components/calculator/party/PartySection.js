@@ -9,7 +9,7 @@ class PartySection extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="h4 text-primary text-center">Party</h1>
+        <h1 className="calc-section-header h4 text-primary text-center">Party</h1>
         <CharacterSelect />
         <AllCharacters />
         <Mc />
