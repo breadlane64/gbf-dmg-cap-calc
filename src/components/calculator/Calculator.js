@@ -41,6 +41,7 @@ class Calculator extends React.Component {
     let calcPartyContext = {
       calcParams: this.state.calcParams,
       curCharacterId: this.state.curCharacterId,
+      autoEnableOnChange: true,
       setAllCalcParams: this.setAllCalcParams,
       setCurCharacterId: this.setCurCharacterId,
     };

@@ -1,6 +1,8 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Character seraphic support skills.
+// These are final damage modifiers.
+//
 // These support skills behave the same as a Seraphic weapon skill
 // and they do not stack with Seraphic weapon skills.
 const data = Object.freeze([
@@ -8,24 +10,24 @@ const data = Object.freeze([
   {
     key: "NONE",
     name: "None",
-    dmgCapUp: 0,
+    value: 0,
   },
 
   // BOOST_20PERCENT
   {
     key: "BOOST_20PERCENT",
     name: "20% boost to damage against weak-element foes",
-    dmgCapUp: 20,
+    value: 20,
   },
 
   // CUSTOM
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     name: "Custom",
     description: "",
-    dmgCapUp: 0,
+    value: 0,
   },
 ]);
 

@@ -23,13 +23,13 @@ class SeraphicGroup extends React.Component {
   handleParamChange(event) {
     let calcParams = this.context.calcParams;
     let seraphic = calcParams.mods.finalDmg.seraphic;
-    if (seraphic.key !== Seraphic.CUSTOM.key) {
+    if (seraphic.key !== Seraphic.CUSTOM_KEY.key) {
       // Automatically change to custom when any param is changed.
       // We need to make a copy of the original data to avoid
       // modifying it.
       let oldName = seraphic.name;
       seraphic = {...seraphic};
-      seraphic.key = Seraphic.CUSTOM.key;
+      seraphic.key = Seraphic.CUSTOM_KEY.key;
       seraphic.description = oldName;
       calcParams.mods.finalDmg.seraphic = seraphic;
       GbfData.custom.seraphic = seraphic;
@@ -49,7 +49,7 @@ class SeraphicGroup extends React.Component {
 
   handleSelectChange(event) {
     let calcParams = this.context.calcParams;
-    if (event.target.value === Seraphic.CUSTOM.key) {
+    if (event.target.value === Seraphic.CUSTOM_KEY.key) {
       calcParams.mods.finalDmg.seraphic = GbfData.custom.seraphic;
     } else {
       calcParams.mods.finalDmg.seraphic = Seraphic[event.target.value];

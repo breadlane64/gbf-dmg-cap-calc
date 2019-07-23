@@ -1,4 +1,4 @@
-import { customKey } from './data/DataUtils'
+import { CUSTOM_KEY, WEAK_ELEM_KEY } from './data/DataUtils'
 import ChargeCapTiers from './data/caps/ChargeCapTiers'
 import DmgCapTiers from './data/caps/DmgCapTiers'
 import SingleCapTiers from './data/caps/SingleCapTiers'
@@ -42,12 +42,12 @@ class GbfData {
   static get defaultCalcParams() {
     return {
       party: {
-        foeElement: FoeElement.WEAK,
+        foeElement: FoeElement[WEAK_ELEM_KEY],
         foeOffElementReduction: FoeOffElementReduction.NONE,
         seraphicWeapon: {
           enabled: true,
-          data: Seraphic.SSR,
-          customData: {...Seraphic[customKey]},
+          dataRef: Seraphic.SSR, // Do not modify referenced object. If custom, modify customData instead.
+          customData: {...Seraphic[CUSTOM_KEY]}, // Modifiable.
         },
         otherWeapons: [
           {
@@ -60,13 +60,13 @@ class GbfData {
         ],
         arcarumSummonSubAura: {
           enabled: true,
-          data: ArcarumSummonSubAura.NONE,
-          customData: {...ArcarumSummonSubAura[customKey]},
+          dataRef: ArcarumSummonSubAura.NONE, // Do not modify referenced object. If custom, modify customData instead.
+          customData: {...ArcarumSummonSubAura[CUSTOM_KEY]}, // Modifiable.
         },
         primarchSummonSubAura: {
           enabled: true,
-          data: PrimarchSummonSubAura.NONE,
-          customData: {...PrimarchSummonSubAura[customKey]},
+          dataRef: PrimarchSummonSubAura.NONE, // Do not modify referenced object. If custom, modify customData instead.
+          customData: {...PrimarchSummonSubAura[CUSTOM_KEY]}, // Modifiable.
         },
         otherSummons: [
           {
@@ -80,8 +80,8 @@ class GbfData {
         ],
         assassinBuff: {
           enabled: true,
-          data: PartyAssassin.NONE,
-          customData: {...PartyAssassin[customKey]},
+          dataRef: PartyAssassin.NONE, // Do not modify referenced object. If custom, modify customData instead.
+          customData: {...PartyAssassin[CUSTOM_KEY]}, // Modifiable.
         },
         dmgBoostedBuff: 0,
         otherBuffs: [
@@ -94,17 +94,17 @@ class GbfData {
         name: MC_NAME,
         dmgCapTiers: DmgCapTiers.DEFAULT,
         customDmgCapTiers: {
-          ...DmgCapTiers[customKey],
-          singleCapTiers: {...SingleCapTiers[customKey]},
-          chargeCapTiers: {...ChargeCapTiers[customKey]},
+          ...DmgCapTiers[CUSTOM_KEY],
+          singleCapTiers: {...SingleCapTiers[CUSTOM_KEY]},
+          chargeCapTiers: {...ChargeCapTiers[CUSTOM_KEY]},
         },
         dmgCapUpBonuses: 1,
         dmgCapUpEmps: 15,
         chainDmgCapUpEmps: 5,
         assassinBuff: {
           enabled: true,
-          data: CharacterAssassin.NONE,
-          customData: {...CharacterAssassin[customKey]},
+          dataRef: CharacterAssassin.NONE, // Do not modify referenced object. If custom, modify customData instead.
+          customData: {...CharacterAssassin[CUSTOM_KEY]}, // Modifiable.
         },
         dmgBoostedBuff: 0,
         otherBuffs: [],
@@ -117,20 +117,20 @@ class GbfData {
           name: "Katalina",
           dmgCapTiers: DmgCapTiers.DEFAULT,
           customDmgCapTiers: {
-            ...DmgCapTiers[customKey],
-            singleCapTiers: {...SingleCapTiers[customKey]},
-            chargeCapTiers: {...ChargeCapTiers[customKey]},
+            ...DmgCapTiers[CUSTOM_KEY],
+            singleCapTiers: {...SingleCapTiers[CUSTOM_KEY]},
+            chargeCapTiers: {...ChargeCapTiers[CUSTOM_KEY]},
           },
           chargeCapUpEmps: 0,
           seraphicSupportSkill: {
             enabled: true,
-            data: CharacterSeraphicSupportSkill.NONE,
-            customData: {...CharacterSeraphicSupportSkill[customKey]},
+            dataRef: CharacterSeraphicSupportSkill.NONE, // Do not modify referenced object. If custom, modify customData instead.
+            customData: {...CharacterSeraphicSupportSkill[CUSTOM_KEY]}, // Modifiable.
           },
           assassinBuff: {
             enabled: true,
-            data: CharacterAssassin.NONE,
-            customData: {...CharacterAssassin[customKey]},
+            dataRef: CharacterAssassin.NONE, // Do not modify referenced object. If custom, modify customData instead.
+            customData: {...CharacterAssassin[CUSTOM_KEY]}, // Modifiable.
           },
           dmgBoostedBuff: 0,
           otherBuffs: [],

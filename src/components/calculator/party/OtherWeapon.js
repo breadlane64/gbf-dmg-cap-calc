@@ -34,6 +34,9 @@ class OtherWeapon extends React.Component {
     let calcParams = this.context.calcParams;
     let weapon = calcParams.party.otherWeapons[this.props.index];
     weapon.data.key = event.target.value;
+    if (this.context.autoEnableOnChange) {
+      weapon.enabled = true;
+    }
     this.context.setAllCalcParams(calcParams);
   }
 
@@ -43,6 +46,9 @@ class OtherWeapon extends React.Component {
     let value = parseFloat(event.target.value);
     if (isFinite(value)) {
       weapon.data.value = value;
+      if (this.context.autoEnableOnChange) {
+        weapon.enabled = true;
+      }
       this.context.setAllCalcParams(calcParams);
     }
   }

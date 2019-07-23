@@ -1,4 +1,4 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Whether the foe reduces damage from elements they are not weak to.
 // Most enemies do not have this property.
@@ -39,7 +39,7 @@ const data = Object.freeze([
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     name: "Custom",
     description: "",
     dmgReduction: 0,

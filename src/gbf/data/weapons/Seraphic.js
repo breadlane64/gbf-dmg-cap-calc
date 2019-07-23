@@ -1,16 +1,13 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Seraphic weapon skills.
-// The same value is used for both single and CA DMG cap ups.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
+// These are final damage multipliers.
 const data = Object.freeze([
   // NONE
   {
     key: "NONE",
     name: "None",
-    dmgCapUp: 0,
+    value: 0,
   },
 
   // SR
@@ -18,7 +15,7 @@ const data = Object.freeze([
   {
     key: "SR",
     name: "SR",
-    dmgCapUp: 10,
+    value: 10,
   },
 
   // SSR
@@ -26,17 +23,17 @@ const data = Object.freeze([
   {
     key: "SSR",
     name: "SSR, any skill lvl",
-    dmgCapUp: 20,
+    value: 20,
   },
 
   // CUSTOM
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     name: "Custom",
     description: "",
-    dmgCapUp: 0,
+    value: 0,
   },
 ]);
 

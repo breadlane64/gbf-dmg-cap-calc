@@ -24,13 +24,13 @@ class AssassinGroup extends React.Component {
   handleParamChange(event) {
     let calcParams = this.context.calcParams;
     let assassin = calcParams.mods.assassin;
-    if (assassin.key !== Assassin.CUSTOM.key) {
+    if (assassin.key !== Assassin.CUSTOM_KEY.key) {
       // Automatically change to custom when any param is changed.
       // We need to make a copy of the original data to avoid
       // modifying it.
       let oldName = assassin.name;
       assassin = {...assassin};
-      assassin.key = Assassin.CUSTOM.key;
+      assassin.key = Assassin.CUSTOM_KEY.key;
       assassin.description = oldName;
       calcParams.mods.assassin = assassin;
       GbfData.custom.assassin = assassin;
@@ -50,7 +50,7 @@ class AssassinGroup extends React.Component {
 
   handleSelectChange(event) {
     let calcParams = this.context.calcParams;
-    if (event.target.value === Assassin.CUSTOM.key) {
+    if (event.target.value === Assassin.CUSTOM_KEY.key) {
       calcParams.mods.assassin = GbfData.custom.assassin;
     } else {
       calcParams.mods.assassin = Assassin[event.target.value];

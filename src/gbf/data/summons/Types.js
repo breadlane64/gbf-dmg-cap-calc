@@ -1,12 +1,9 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Types of summon effects.
 //
 // These objects should never be referenced directly, only copied,
 // e.g. when adding a new summon to the party.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
 const data = Object.freeze([
   // OMEGA
   {

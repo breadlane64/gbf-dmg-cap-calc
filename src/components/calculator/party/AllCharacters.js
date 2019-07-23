@@ -3,6 +3,7 @@ import CollapsibleDiv from 'components/common/CollapsibleDiv'
 import CalcPartyContext from '../CalcPartyContext';
 import CharacterSelect from './CharacterSelect';
 import OtherWeapon from './OtherWeapon';
+import SeraphicWeapon from './SeraphicWeapon';
 
 // The dmg caps section of the calculator view.
 class AllCharacters extends React.Component {
@@ -36,6 +37,7 @@ class AllCharacters extends React.Component {
           collapsibleId="weapons-collapsible"
           text="Weapons"
         >
+          <SeraphicWeapon />
           {this.renderOtherWeapons()}
         </CollapsibleDiv>
       </div>

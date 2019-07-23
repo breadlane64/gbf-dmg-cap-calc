@@ -1,9 +1,7 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Single character Assassin status effects.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
+// These have separate values for single and charge attack damage caps up.
 const data = Object.freeze([
   // NONE
   {
@@ -27,7 +25,7 @@ const data = Object.freeze([
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     name: "Custom",
     description: "",
     singleCapUp: 0,

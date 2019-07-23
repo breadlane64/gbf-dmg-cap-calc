@@ -1,11 +1,8 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 import SingleCapTiers from './SingleCapTiers'
 import ChargeCapTiers from './ChargeCapTiers'
 
 // Damage cap tiers.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
 const data = Object.freeze([
   // DEFAULT
   // Most characters use these tiers.
@@ -83,7 +80,7 @@ const data = Object.freeze([
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     name: "Custom",
     singleCapTiers: null, // Init with a copy of custom single cap tiers.
     chargeCapTiers: null, // Init with a copy of custom charge cap tiers.

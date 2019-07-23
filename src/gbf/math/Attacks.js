@@ -10,6 +10,7 @@ export function chargeAttackTotalCapMod(party, character) {
   let assassinCapMod = totalAssassinMod(party, character, false);
   let sumOfOtherCapMods = totalOtherChargeMods(party, character);
 
+  // Return the total. Keep one factor of 100 in the total so it remains a %.
   return finalCapMod * assassinCapMod * sumOfOtherCapMods / (100 ** 2);
 }
 

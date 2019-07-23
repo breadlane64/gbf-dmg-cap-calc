@@ -1,12 +1,9 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Example weapon skill effects.
 //
 // These objects should never be referenced directly, only copied,
 // e.g. when adding a new weapon to the party.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
 const data = Object.freeze([
   // BEAST_WEAPON_MALUS_SL15
   {

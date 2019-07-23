@@ -23,13 +23,13 @@ class FoeGroup extends React.Component {
   handleParamChange(event) {
     let calcParams = this.context.calcParams;
     let offElemReduction = calcParams.foeOffElementReduction;
-    if (offElemReduction.key !== FoeOffElementReduction.CUSTOM.key) {
+    if (offElemReduction.key !== FoeOffElementReduction.CUSTOM_KEY.key) {
       // Automatically change to custom when any param is changed.
       // We need to make a copy of the original data to avoid
       // modifying it.
       let oldName = offElemReduction.name;
       offElemReduction = {...offElemReduction};
-      offElemReduction.key = FoeOffElementReduction.CUSTOM.key;
+      offElemReduction.key = FoeOffElementReduction.CUSTOM_KEY.key;
       offElemReduction.description = oldName;
       calcParams.foeOffElementReduction = offElemReduction;
       GbfData.custom.foeOffElementReduction = offElemReduction;
@@ -53,7 +53,7 @@ class FoeGroup extends React.Component {
       calcParams.foeElement = FoeElement[event.target.value];
     } else {
       // Off-element resistance changed.
-      if (event.target.value === FoeOffElementReduction.CUSTOM.key) {
+      if (event.target.value === FoeOffElementReduction.CUSTOM_KEY.key) {
         calcParams.foeOffElementReduction = GbfData.custom.foeOffElementReduction;
       } else {
         calcParams.foeOffElementReduction = FoeOffElementReduction[event.target.value];

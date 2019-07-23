@@ -1,14 +1,14 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { customKey } from 'gbf/data/DataUtils'
+import { CUSTOM_KEY } from 'gbf/data/DataUtils'
 
 // A description input field.
-// Visible iff the given hashmap key is CUSTOM.
+// Visible iff the given hashmap key is CUSTOM_KEY.
 class DescriptionInput extends React.Component {
   render() {
-    // If the selected key is not CUSTOM, then do not show
+    // If the selected key is not CUSTOM_KEY, then do not show
     // the description field.
-    if (this.props.selectedKey !== customKey) {
+    if (this.props.selectedKey !== CUSTOM_KEY) {
       return null;
     }
 

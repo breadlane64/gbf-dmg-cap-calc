@@ -23,13 +23,13 @@ class ArcarumSummonGroup extends React.Component {
   handleParamChange(event) {
     let calcParams = this.context.calcParams;
     let arcarumSSA = calcParams.mods.finalDmg.arcarumSummonSubAura;
-    if (arcarumSSA.key !== ArcarumSummonSubAura.CUSTOM.key) {
+    if (arcarumSSA.key !== ArcarumSummonSubAura.CUSTOM_KEY.key) {
       // Automatically change to custom when any param is changed.
       // We need to make a copy of the original data to avoid
       // modifying it.
       let oldName = arcarumSSA.name;
       arcarumSSA = {...arcarumSSA};
-      arcarumSSA.key = ArcarumSummonSubAura.CUSTOM.key;
+      arcarumSSA.key = ArcarumSummonSubAura.CUSTOM_KEY.key;
       arcarumSSA.description = oldName;
       calcParams.mods.finalDmg.arcarumSummonSubAura = arcarumSSA;
       GbfData.custom.arcarumSummonSubAura = arcarumSSA;
@@ -49,7 +49,7 @@ class ArcarumSummonGroup extends React.Component {
 
   handleSelectChange(event) {
     let calcParams = this.context.calcParams;
-    if (event.target.value === ArcarumSummonSubAura.CUSTOM.key) {
+    if (event.target.value === ArcarumSummonSubAura.CUSTOM_KEY.key) {
       calcParams.mods.finalDmg.arcarumSummonSubAura = GbfData.custom.arcarumSummonSubAura;
     } else {
       calcParams.mods.finalDmg.arcarumSummonSubAura = ArcarumSummonSubAura[event.target.value];

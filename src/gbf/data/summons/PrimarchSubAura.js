@@ -1,39 +1,37 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Primarch summon sub-auras.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
+// These provide damage cap up.
 const data = Object.freeze([
   // NONE
   {
     key: "NONE",
     name: "None",
-    dmgCapUp: 0,
+    value: 0,
   },
 
   // SSR_0STAR
   {
     key: "SSR_0STAR",
     name: "0★/1★/2★",
-    dmgCapUp: 5,
+    value: 5,
   },
 
   // SSR_3STAR
   {
     key: "SSR_3STAR",
     name: "3★",
-    dmgCapUp: 10,
+    value: 10,
   },
 
   // CUSTOM
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     name: "Custom",
     description: "",
-    dmgCapUp: 0,
+    value: 0,
   },
 ]);
 

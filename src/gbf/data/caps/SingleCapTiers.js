@@ -1,12 +1,9 @@
-import { customKey, dataArrayToHashmap } from '../DataUtils'
+import { CUSTOM_KEY, dataArrayToHashmap } from '../DataUtils'
 
 // Single attack damage cap tiers.
 //
 // The tier objects must be ordered from highest damage tier
 // to lowest damage tier.
-//
-// Note: the order of these objects determines the order they appear
-// in the UI.
 const data = Object.freeze([
   // DEFAULT
   // Most (all?) characters use these tiers.
@@ -40,7 +37,7 @@ const data = Object.freeze([
   // Special key that indicates custom values should be used.
   // This object should be cloned so it can be modified to use custom values.
   {
-    key: customKey,
+    key: CUSTOM_KEY,
     tiersArray: [
       // 600k+ reduced by 99%
       {
